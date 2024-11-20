@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Color Display</title>
+    <style>
+      .color-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .color-box {
+        width: 150px;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-weight: bold;
+        text-align: center;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="color-container">
+    </div>
+
+    <script>
+      const colors = [
+        "#92CDDF", "#38C946", "#3D7EF7", "#FFCB30",
+        "#276676", "#FFFFFF", "#9AD5E7", "#00404D", "#7A545A", "#FFFFFF",
+        "#FAC9CF", "#58363C", "#6F5480", "#FFFFFF", "#E0BFF3", "#472F59",
+        "#BA1A1A", "#FFFFFF", "#FFDAD6", "#410002", "#F8F9FA", "#191C1D",
+        "#F8F9FA", "#DBE4E7", "#40484B", "#70787C", "#BFC8CB", "#000000",
+        "#2E3132", "#EFF1F2", "#94D0E2", "#B0ECFE", "#001F27", "#94D0E2",
+        "#004E5D", "#FFD9DD", "#2F1318", "#EBBAC0", "#603D42", "#F3DAFF",
+        "#281039", "#DBBBEE", "#563D67", "#D8DADB", "#F8F9FA", "#FFFFFF",
+        "#F2F4F5", "#EDEEEF", "#E7E8E9", "#E1E3E4", "#004A58", "#276676",
+        "#417D8D", "#5B393F", "#926A6F", "#523963", "#866A98", "#8C0009",
+        "#DA342E", "#F8F9FA", "#191C1D", "#DBE4E7", "#3C4447", "#586063",
+        "#747C7F", "#000000", "#2E3132", "#EFF1F2", "#94D0E2", "#417D8D",
+        "#926A6F", "#775257", "#6C527E", "#D8DADB", "#F8F9FA", "#FFFFFF",
+        "#F2F4F5", "#EDEEEF", "#E7E8E9", "#E1E3E4", "#00262F", "#276676",
+        "#004A58", "#361A1F", "#5B393F", "#2F1840", "#523963", "#4E0002",
+        "#8C0009", "#8C0009", "#F8F9FA", "#191C1D", "#DBE4E7", "#1D2528",
+        "#3C4447", "#000000", "#2E3132", "#FFFFFF", "#CCF2FF", "#004A58",
+        "#00323C", "#422429", "#3A224B", "#D8DADB", "#F8F9FA", "#FFFFFF",
+        "#F2F4F5", "#EDEEEF", "#E7E8E9", "#E1E3E4", "#C0F0FF", "#94D0E2",
+        "#003641", "#8CC7D9", "#003541", "#FFF3F3", "#47272D", "#F0BFC5",
+        "#513035", "#F6E2FF", "#3E264F", "#3E2650", "#FFB4AB", "#690005",
+        "#93000A", "#FFDAD6", "#111415", "#E1E3E4", "#40484B", "#BFC8CB",
+        "#747C7F", "#9CA5A9", "#2D3B3E", "#A3AEB1", "#191C1D", "#94D0E2",
+        "#8CC7D9", "#003541", "#003F49", "#00353F", "#F0BFC5", "#47272D",
+        "#F0B3C7", "#2F0F13", "#D3B3E6", "#3E264F", "#8B74A9", "#3E264F",
+        "#40484B", "#111415", "#111415", "#191C1D", "#2D3B3E", "#3B4347",
+        "#3E464A"
+      ];
+
+      const container = document.querySelector(".color-container");
+
+      colors.forEach(color => {
+        const colorDiv = document.createElement("div");
+        colorDiv.classList.add("color-box");
+        colorDiv.style.backgroundColor = color;
+        colorDiv.textContent = color;
+
+        colorDiv.addEventListener("click", () => {
+          navigator.clipboard.writeText(color).then(() => {
+            alert(`Color ${color} copied to clipboard!`);
+          }).catch(err => {
+            alert('Failed to copy color: ' + err);
+          });
+        });
+
+        container.appendChild(colorDiv);
+      });
+    </script>
+  </body>
+</html>
